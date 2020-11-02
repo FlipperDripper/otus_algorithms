@@ -1,5 +1,7 @@
 from ..test import test
 
+
+
 # O(10^N)
 def tickets(n: int) -> int:
     d = {}
@@ -17,13 +19,14 @@ def tickets(n: int) -> int:
     return count
 
 
+#O(n) ?
 def tickets_fast(n: int) -> int:
     arr = [1] * 10
     for _ in range(n - 1):
         arr = gen_array(arr)
     return sum([x * x for x in arr])
 
-#O(n) ?
+
 def gen_array(prev_array):
     delta_length = 9
     new_arr_len = len(prev_array) + delta_length
