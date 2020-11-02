@@ -23,7 +23,7 @@ class Result:
         return f'''
 {bg_color}{self.status.upper()}{ENDC}
 {self.message}
-0'''
+'''
 
 
 class Test:
@@ -48,6 +48,7 @@ class Test:
         elapsed_time = time.process_time() - t
         if prepared_output == result:
             print(Result(f'{test_name} passed in {elapsed_time}ms', 'success'))
+            print(f'got: {result}, expected: {output_data}')
         else:
             print(Result(f'{test_name} failed in {elapsed_time}ms', 'error'))
             print(f'got: {result}, expected: {output_data}')
