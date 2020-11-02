@@ -23,7 +23,7 @@ def tickets_fast(n: int) -> int:
         arr = gen_array(arr)
     return sum([x * x for x in arr])
 
-
+#O(n) ?
 def gen_array(prev_array):
     delta_length = 9
     new_arr_len = len(prev_array) + delta_length
