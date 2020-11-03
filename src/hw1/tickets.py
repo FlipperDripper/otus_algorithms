@@ -19,7 +19,7 @@ def tickets(n: int) -> int:
     return count
 
 
-#O(n) ?
+#O(n^2) ?
 def tickets_fast(n: int) -> int:
     arr = [1] * 10
     for _ in range(n - 1):
