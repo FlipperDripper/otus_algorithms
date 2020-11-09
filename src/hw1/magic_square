@@ -1,0 +1,16 @@
+1) y >= x ? "# ": ". ";
+2) y == x ? "# ": ". ";
+3) Math.abs(x + y) == 24 ? "# ": ". "
+4) y + x < 30 ? "# ": ". ";
+Дальше решил попробовать на python
+5) '#' if 2 > y - x * 2 >= 0 else '.'
+6) '#' if not (x > 10 and y > 10) else '.'
+7) '#' if x > 15 and y > 15 else '.'
+8) '#' if x == 0 or y == 0 else '.'
+9) '#' if y < x - 10 or y > x + 10 else '.'
+10) '#' if y <= x * 2 and y >= x else '.'
+11) '#' if x == 1 or y == 1 or x == 23 or y == 23 else '.'
+13) '#' if 20 <= x + y <= 28 else '.'
+20) '#' if (x + y) % 2 == 0 else '.'
+25) '#' if x % 6 == 0 or y % 6 == 0 else '.'
+
