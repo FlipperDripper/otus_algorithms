@@ -4,6 +4,7 @@ import os, fnmatch
 import multiprocessing
 from multiprocessing.managers import BaseManager
 from prettytable import PrettyTable
+import re
 
 CREDBG = '\33[41m'
 CGREENBG = '\33[42m'
@@ -93,13 +94,20 @@ class ComparableTest(BaseTest):
         manager.start()
         self.compare_data: ComparableData = manager.ComparableData()
 
+    def recursion_error(self):
+        print(f'{CREDBG}RECURSION ERROR{ENDC}')
+
     def run_case(self, test_name, input_data, output_data):
         prepared_input, prepared_output = self.prepared_data(input_data, output_data)
 
         def limited_func(compare_data: ComparableData, func, func_name):
             compare_data.set(test_name, func_name)
             t = time.process_time()
-            result = func(prepared_input)
+            result = None
+            try:
+                result = func(prepared_input)
+            except RecursionError:
+                self.recursion_error()
             elapsed_time = time.process_time() - t
             is_truth = result == prepared_output
             compare_data.set(test_name, func_name, result, prepared_output, elapsed_time, is_truth)
@@ -181,7 +189,7 @@ class TestSource:
 
     def join_files(self, file_names):
         res = list(map(lambda fn: os.path.join(self.path, fn), file_names))
-        res.sort()
+        res.sort(key=lambda filename: int(re.match(r".*\.(\d+)\.(in|out)", filename).group(1)))
         return res
 
     def grab_file_names(self):
@@ -191,6 +199,7 @@ class TestSource:
             list(filter(lambda filename: fnmatch.fnmatch(filename, '*.in'), test_source)))
         self.output_files = self.join_files(
             list(filter(lambda filename: fnmatch.fnmatch(filename, '*.out'), test_source)))
+        print(self.input_files, self.output_files)
 
     def source(self):
         i = 0
