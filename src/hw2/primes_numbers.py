@@ -73,8 +73,8 @@ def sieve_erato_2(n: int):
 if __name__ == '__main__':
     t = test.ComparableTest(
         {
-            # 'Итерация': primes_iter,
-            # 'Оптимизированая итерация': primes_iter_opt,
+            'Итерация': primes_iter,
+            'Оптимизированая итерация': primes_iter_opt,
             'Решето Эратосфена O(n log log n)': sieve_erato_1,
             'Решето Эратосфена O(n)': sieve_erato_2
         }, 'problems/2/5.Primes', int, int)
