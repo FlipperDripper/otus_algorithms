@@ -35,6 +35,7 @@ def matrix_fib(n):
         result = matrix_multiplication(result, matrix)
     return result[0][0]
 
+
 def matrix_multiplication(first_matrix, second_matrix):
     result_matrix = []
     for (x, row) in enumerate(first_matrix):
