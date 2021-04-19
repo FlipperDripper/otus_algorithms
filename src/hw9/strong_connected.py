@@ -28,7 +28,7 @@ class GraphWithKosarayru:
 
     # граф с обратными (инвертированными) ребрами
     def transpose(self):
-        g = Graph(self.V)
+        g = GraphWithKosarayru(self.V)
 
         for i in self.graph:
             for j in self.graph[i]:
